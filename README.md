@@ -2,16 +2,16 @@
 # XML2JSON
 [![Build Status](https://travis-ci.org/paulstey/XML2JSON.jl.svg?branch=master)](https://travis-ci.org/paulstey/XML2JSON.jl)
 
+### Installation
+```{Julia}
+Pkg.clone("https://github.com/paulstey/XML2JSON.jl.git")
+```
+
 Under the hood, the current implementation of `xml2json()` relies on `MultiDict` objects from the DataStructures package. The process of converting from XML to JSON involves walking through the XML that we parse with the LightXML package, and using recursion to fill a series of nested MultiDict objects.
 
 The MultiDict is then (recursively) unpacked into an ASCIIString using the appropriate JSON formatting in the string.
 
 Note that at this time the XML's attributes are ignored in the parsing. Any information kept here will not be preserved in the resulting JSON.
-
-### Installation
-```{Julia}
-Pkg.clone("https://github.com/paulstey/XML2JSON.jl.git")
-```
 
 ### Example
 Consider the following simple XML document. This toy example was borrowed (with slight modification) from the LightXML package.
