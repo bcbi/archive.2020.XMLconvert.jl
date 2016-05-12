@@ -1,5 +1,5 @@
+
 # XML2JSON
-## XML2JSON
 Under the hood, the current implementation of `xml2json()` relies on `MultiDict` objects from the DataStructures package. The process of converting from XML to JSON involves walking through the XML that we parse with the LightXML package, and using recursion to fill a series of nested MultiDict objects.
 
 Note that at this time the XML's attributes are ignored in the parsing. Any information kept here will not be preserved in the resulting JSON.
