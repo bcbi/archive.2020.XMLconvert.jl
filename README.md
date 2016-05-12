@@ -14,20 +14,20 @@ Pkg.clone("https://github.com/paulstey/XML2JSON.jl.git")
 ```
 
 ### Example
-Consider the following simple XML document. This example is borrowed from the LightXML package and appears in `/data/ex1.xml` directory of this repo.
+Consider the following simple XML document. This toy example was borrowed (with slight modification) from the LightXML package.
 ```{XML}
 <?xml version="1.0" encoding="UTF-8"?>
 <bookstore>
   <book>
-    <title>Everyday Italian</title>
-    <author>Giada De Laurentiis</author>
-    <author>James Fakename</author>
+    <title>Biography of John Adams</title>
+    <author>David Smith</author>
+    <author>James Jones</author>
     <year>2005</year>
     <price>30.00</price>
   </book>
   <book>
-    <title>Harry Potter</title>c
-    <author>J K. Rowling</author>
+    <title>Introduction to Templates in C++</title>
+    <author>Samantha Black</author>
     <year>2005</year>
     <price>29.99</price>
   </book>
@@ -35,19 +35,21 @@ Consider the following simple XML document. This example is borrowed from the Li
     <name>Henry</name>
     <address>
       <state>CA</state>
-      <street>123 Jones Ave</street>
+      <street>123 Jones Avenue</street>
       <zip>12345</zip>
     </address>
-    <age>99</age>
+    <age>59</age>
   </owner>
 </bookstore>
 ```
 
+Suppose we copy and paste the above into a file called `ex1.xml`.
+
 ### Reading in XML document
 ```{Julia}
-include("./src/xml2son.jl")
+using XML2JSON
 
-filename = "./data/ex1.xml"
+filename = "ex1.xml"
 
 # Read in XML and get its root
 xdoc = parse_file(filename)
@@ -60,6 +62,14 @@ display(xroot)
 Next we simply provide the parsed XML's root to the `xml2json()` function.
 ```{Julia}
 json_string = xml2json(xroot)
+print(json_string)
 ```
 
 ### Write JSON to disk
+```{Julia}
+f = open("ex1.json", "w")
+write(f, json_string)
+```
+
+### Spacing and Newline characters
+Note that the `xml2json()` function takes two optional arguments. The first controls the spacing of the indentation in the resulting JSON. This defaults to 4, but some prefer 8. The second optional argument (and therefore, third positional argument) controls how newline characters are handled. By default, this replaces `\n` with `\\n` in the JSON's text fields. This produces valid JSON documents.
