@@ -7,7 +7,7 @@
 Pkg.clone("https://github.com/bcbi/XMLconvert.jl.git")
 ```
 
-This package implements a few simple XML conversions. As of now, we can convert XMLs to nested `MultiDict` objects from the DataStructures packages. And we can also convert XMLs to JSONs. Note that as of this writing, we drop the attributes of the XML.
+This package implements a few simple XML conversions. As of now, we can convert XMLs to nested `MultiDict` objects from the (DataStructures)[https://github.com/JuliaLang/DataStructures.jl] package. We can also convert XMLs to JSONs. Note that as of this writing, we drop the attributes of the XML.
 
 
 ### Example
