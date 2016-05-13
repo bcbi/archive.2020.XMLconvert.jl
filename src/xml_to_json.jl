@@ -1,4 +1,5 @@
 
+
 # When at a leaf node, this function returns the values in an appropriate
 # form. This differs for cases when the leaf node holds an array of elements,
 # a single strings, or a single number (arrays of numbers not yet implemented).
@@ -22,7 +23,7 @@ end
 # string with the keys and values of a nested multi-dictionary object
 # returned by the xml2dict function.
 
-function tags_and_values(mdict::DataStructures.MultiDict{Any, Any}, res::ASCIIString, nspaces::Int = 4)
+function tags_and_elements(mdict::DataStructures.MultiDict{Any, Any}, res::ASCIIString, nspaces::Int = 4)
     wspace = get_indentation(nspaces)
     nkeys = length(keys(mdict))
     res *= "\n" * wspace * "{"
@@ -38,13 +39,13 @@ function tags_and_values(mdict::DataStructures.MultiDict{Any, Any}, res::ASCIISt
         elseif num_elem > 1
             res *= "\n" * wspace * "\"" * k * "\":" * "["
             for j = 1:num_elem
-                res = tags_and_values(mdict[k][j], res, nspaces + 4)
+                res = tags_and_elements(mdict[k][j], res, nspaces + 4)
                 res *= (j < num_elem) ? "," : ""
             end
             res *= (i < nkeys) ? "\n" * wspace * "]," : "\n" * wspace * "]"
         elseif num_elem == 1
             res *= string("\n", wspace, "\"", k, "\":")
-            res = tags_and_values(mdict[k][1], res, nspaces + 4)
+            res = tags_and_elements(mdict[k][1], res, nspaces + 4)
             res *= (i < nkeys) ? "," : ""
         end
     end
@@ -65,7 +66,7 @@ function xml2json(xroot::LightXML.XMLElement, nspaces::Int = 4, replace_newline:
     heading = string("{", "\n", "\"", xmlstring[2:end_idx], "\"", ":", "\n")
 
     xdict = xml2dict(xroot, replace_newline)
-    body = tags_and_values(xdict, "", nspaces)
+    body = tags_and_elements(xdict, "", nspaces)
     out_string = heading * body * "\n}"
 
     return out_string
