@@ -11,7 +11,7 @@ This package implements a few simple XML conversions. As of now, we can convert 
 
 
 ### Examples
-For our examples we consider the following simple XML document. This toy example was borrowed (with slight modification) from the LightXML package.
+For our examples we consider the following simple XML document. This toy example was borrowed (with slight modification) from the [LightXML](https://github.com/JuliaLang/LightXML.jl) package.
 ```{XML}
 <?xml version="1.0" encoding="UTF-8"?>
 <bookstore>
@@ -56,7 +56,7 @@ display(xroot)
 ```
 
 ### Convert to `MultiDict`
-In many cases, it is desirable to convert an XML to a more native Julia object. This can be useful for unpacking elements of the XML and flattening out the structure of data. The code below takes an XML's root (from above example) and converts the XML to a nested `MultiDict` object.
+In many cases, it is desirable to convert an XML to a more native Julia object. This can be useful for unpacking elements of the XML and flattening out the structure of data. The `xml2dict()` function takes an XML's root (from above example) and converts the XML to a nested `MultiDict` object.
 ```{Julia}
 # convert to MultiDict
 xdict = xml2dict(xroot)
