@@ -44,7 +44,7 @@ Suppose we copy and paste the above into a file called `ex1.xml`.
 
 ### Reading in XML document
 ```{Julia}
-using XMLconert
+using XMLconvert
 
 filename = "ex1.xml"
 
@@ -60,11 +60,33 @@ In many cases, it is desirable to convert an XML to a more native Julia object. 
 ```{Julia}
 # convert to MultiDict
 xdict = xml2dict(xroot)
+```
 
-# print key structure
+```{Julia}
+# print key structure of the MultiDict
 show_key_structure(xdict)
 ```
 
+```
+-book
+    -author
+    -author
+    -price
+    -year
+    -title
+-book
+    -author
+    -price
+    -year
+    -title
+-owner
+    -name
+    -age
+    -address
+        -zip
+        -street
+        -state
+```
 
 ### Convert to JSON
 If we wanted to convert the above XML to JSON we simply provide the parsed XML's root to the `xml2json()` function.
