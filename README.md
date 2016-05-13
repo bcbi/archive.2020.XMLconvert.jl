@@ -7,11 +7,11 @@
 Pkg.clone("https://github.com/bcbi/XMLconvert.jl.git")
 ```
 
-This package implements a few simple XML conversions. As of now, we can convert XMLs to nested `MultiDict` objects from the (DataStructures)[https://github.com/JuliaLang/DataStructures.jl] package. We can also convert XMLs to JSONs. Note that as of this writing, we drop the attributes of the XML.
+This package implements a few simple XML conversions. As of now, we can convert XMLs to nested `MultiDict` objects from the [DataStructure](https://github.com/JuliaLang/DataStructures.jl) package. We can also convert XMLs to JSONs. Note that as of this writing, we drop the attributes of the XML.
 
 
-### Example
-Consider the following simple XML document. This toy example was borrowed (with slight modification) from the LightXML package.
+### Examples
+For our examples we consider the following simple XML document. This toy example was borrowed (with slight modification) from the LightXML package.
 ```{XML}
 <?xml version="1.0" encoding="UTF-8"?>
 <bookstore>
@@ -55,6 +55,15 @@ xroot = root(xdoc)
 display(xroot)
 ```
 
+### Convert to `MultiDict`
+In many cases, it is desirable to convert an XML to a more native Julia object. This can be useful for unpacking elements of the XML and flattening out the structure. The code below takes an XML and converts it to a nested `MultiDict` object.
+```{Julia}
+# convert to MultiDict
+xdict = xml2dict(xroot)
+
+# print key structure
+show_key_structure(xdict)
+```
 
 
 ### Convert to JSON
