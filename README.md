@@ -7,7 +7,7 @@
 Pkg.clone("https://github.com/bcbi/XMLconvert.jl.git")
 ```
 
-This package implements a fairly simplistic XML-to-JSON conversion. Note that at this time the XML's attributes are ignored in the parsing. Any information kept here will not be preserved in the resulting JSON.
+This package implements a fairly simple XML-to-JSON conversion. Note that at this time the XML's attributes are ignored in the parsing. Any information kept here will not be preserved in the resulting JSON.
 
 Given the root of an XML, the `xml2json()` function generates an `ASCIIString` with the appropriate formatting for JSON. We can then write this to disk.
 
