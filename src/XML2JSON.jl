@@ -3,7 +3,7 @@ module XML2JSON
 using LightXML
 using DataStructures
 
-export xml2json, parse_file
+export xml2json, parse_file, root
 
 include("xml_to_json.jl")
 include("xml2dict.jl")
