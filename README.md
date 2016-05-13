@@ -100,7 +100,7 @@ This produces a the following:
 }
 ```
 
-### Write JSON to disk
+### Write JSON to Disk
 Finally, we can simply print that string to disk using Julia's standard `write()` function.
 ```{Julia}
 f = open("ex1.json", "w")
