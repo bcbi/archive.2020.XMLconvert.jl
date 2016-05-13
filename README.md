@@ -1,10 +1,10 @@
 
 # xml2json
-[![Build Status](https://travis-ci.org/bcbi/xml2json.jl.svg?branch=master)](https://travis-ci.org/bcbi/xml2json.jl)
+[![Build Status](https://travis-ci.org/bcbi/XMLconvert.jl.svg?branch=master)](https://travis-ci.org/bcbi/XMLconvert.jl)
 
 ### Installation
 ```{Julia}
-Pkg.clone("https://github.com/bcbi/xml2json.jl.git")
+Pkg.clone("https://github.com/bcbi/XMLconvert.jl.git")
 ```
 
 This package implements a fairly simplistic XML-to-JSON conversion. Note that at this time the XML's attributes are ignored in the parsing. Any information kept here will not be preserved in the resulting JSON.

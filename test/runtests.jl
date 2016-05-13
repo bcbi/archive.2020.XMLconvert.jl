@@ -1,4 +1,4 @@
-using XML2JSON
+using XMLconvert
 using Base.Test
 
 # write your own tests here
