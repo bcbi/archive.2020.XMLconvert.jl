@@ -7,11 +7,11 @@
 Pkg.clone("https://github.com/paulstey/XML2JSON.jl.git")
 ```
 
-Under the hood, the current implementation of `xml2json()` relies on `MultiDict` objects from the DataStructures package. The process of converting from XML to JSON involves walking through the XML that we parse with the LightXML package, and using recursion to fill a series of nested MultiDict objects.
+This package implements a fairly simplistic XML-to-JSON conversion. Note that at this time the XML's attributes are ignored in the parsing. Any information kept here will not be preserved in the resulting JSON.
 
-The MultiDict is then (recursively) unpacked into an ASCIIString using the appropriate JSON formatting in the string.
+Given the root of an XML, the `xml2json()` function generates an ASCIIString with the appropriate formatting for JSON. We can then write this to disk.
 
-Note that at this time the XML's attributes are ignored in the parsing. Any information kept here will not be preserved in the resulting JSON.
+
 
 ### Example
 Consider the following simple XML document. This toy example was borrowed (with slight modification) from the LightXML package.
@@ -109,4 +109,8 @@ close(f)
 ```
 
 ### Spacing and Newline Characters
-Note that the `xml2json()` function takes two optional arguments. The first controls the spacing of the indentation in the resulting JSON. This defaults to 4, but some prefer 8. The second optional argument (and therefore, third positional argument) controls how newline characters are handled. By default, this replaces `\n` with `\\n` in the JSON's text fields. This produces valid JSON documents.
+Note that the `xml2json()` function takes two optional arguments. The first controls the spacing of the indentation in the resulting JSON. This defaults to 4 (some prefer 8). The second optional argument (and therefore, third positional argument) controls how newline characters are handled. By default, this replaces `\n` with `\\n` in the JSON's text fields. This produces valid JSON documents.
+
+
+### _Caveats_
+This package is under active development. Please notify us of bugs or proposed improvements by submitting an issue or pull request.
