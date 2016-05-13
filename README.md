@@ -65,12 +65,48 @@ json_string = xml2json(xroot)
 print(json_string)
 ```
 
+This produces a the following:
+```{JSON}
+{
+"bookstore":
+
+    {
+    "book":[
+        {
+        "author":["David Smith","James Jones"],
+        "price":30.0,
+        "year":2005,
+        "title":"Biography of John Adams"
+        },
+        {
+        "author":"Samantha Black",
+        "price":29.99,
+        "year":2005,
+        "title":"Introduction to Templates in C++"
+        }
+    ],
+    "owner":
+        {
+        "name":"Henry",
+        "age":59,
+        "address":
+            {
+            "zip":12345,
+            "street":"123 Jones Avenue",
+            "state":"CA"
+            }
+        }
+    }
+}
+```
+
 ### Write JSON to disk
+Finally, we can simply print that string to disk using Julia's standard `write()` function.
 ```{Julia}
 f = open("ex1.json", "w")
 write(f, json_string)
 close(f)
 ```
 
-### Spacing and Newline characters
+### Spacing and Newline Characters
 Note that the `xml2json()` function takes two optional arguments. The first controls the spacing of the indentation in the resulting JSON. This defaults to 4, but some prefer 8. The second optional argument (and therefore, third positional argument) controls how newline characters are handled. By default, this replaces `\n` with `\\n` in the JSON's text fields. This produces valid JSON documents.
