@@ -28,3 +28,33 @@ function is_leafnode(obj)
     end
     return res
 end
+
+
+function is_multidict(obj)
+    if typeof(obj) == DataStructures.MultiDict{Any, Any}
+        res = true
+    else
+        res = false
+    end
+    return res
+end
+
+
+function show_key_structure(xmldict_obj, nspaces = 4)
+    if is_multidict(xmldict_obj)
+        keys_array = collect(keys(xmldict_obj))
+        indent_str = get_indentation(nspaces)
+        for k in keys_array
+            println(indent_str, "-", k)
+            if is_multidict(xmldict_obj[k]) || typeof(xmldict_obj[k]) == Array{Any, 1}
+                num_elem = length(xmldict_obj[k])
+                for i = 1:num_elem
+                    show_key_structure(xmldict_obj[k][i], nspaces + 4)
+                    if i < num_elem
+                        println(indent_str, "-", k)
+                    end
+                end
+            end
+        end
+    end
+end
