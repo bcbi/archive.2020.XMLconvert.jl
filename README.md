@@ -2,13 +2,13 @@
 # XMLconvert
 [![Build Status](https://travis-ci.org/bcbi/XMLconvert.jl.svg?branch=master)](https://travis-ci.org/bcbi/XMLconvert.jl)
 
+This package implements a few simple XML conversions. As of now, we can convert XMLs to nested `MultiDict` objects from the [DataStructure](https://github.com/JuliaLang/DataStructures.jl) package. We can also convert XMLs to JSONs. Note that as of this writing, we drop the attributes of the XML.
+
+
 ### Installation
 ```{Julia}
 Pkg.clone("https://github.com/bcbi/XMLconvert.jl.git")
 ```
-
-This package implements a few simple XML conversions. As of now, we can convert XMLs to nested `MultiDict` objects from the [DataStructure](https://github.com/JuliaLang/DataStructures.jl) package. We can also convert XMLs to JSONs. Note that as of this writing, we drop the attributes of the XML.
-
 
 ### Examples
 For our examples we consider the following simple XML document. This toy example was borrowed (with slight modification) from the [LightXML](https://github.com/JuliaLang/LightXML.jl) package.
@@ -109,7 +109,7 @@ This produces a the following:
 ```
 
 ### Write JSON to Disk
-Finally, we can simply print that string to disk using Julia's standard `write()` function.
+Finally, we can simply write that string to disk using Julia's standard `write()` function.
 ```{Julia}
 f = open("ex1.json", "w")
 write(f, json_string)
