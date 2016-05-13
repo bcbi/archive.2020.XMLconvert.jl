@@ -1,15 +1,15 @@
 
-# XML2JSON
-[![Build Status](https://travis-ci.org/paulstey/XML2JSON.jl.svg?branch=master)](https://travis-ci.org/paulstey/XML2JSON.jl)
+# xml2json
+[![Build Status](https://travis-ci.org/bcbi/xml2json.jl.svg?branch=master)](https://travis-ci.org/paulstey/xml2json.jl)
 
 ### Installation
 ```{Julia}
-Pkg.clone("https://github.com/paulstey/XML2JSON.jl.git")
+Pkg.clone("https://github.com/bcbi/xml2json.jl.git")
 ```
 
 This package implements a fairly simplistic XML-to-JSON conversion. Note that at this time the XML's attributes are ignored in the parsing. Any information kept here will not be preserved in the resulting JSON.
 
-Given the root of an XML, the `xml2json()` function generates an ASCIIString with the appropriate formatting for JSON. We can then write this to disk.
+Given the root of an XML, the `xml2json()` function generates an `ASCIIString` with the appropriate formatting for JSON. We can then write this to disk.
 
 
 
@@ -47,7 +47,7 @@ Suppose we copy and paste the above into a file called `ex1.xml`.
 
 ### Reading in XML document
 ```{Julia}
-using XML2JSON
+using xml2json
 
 filename = "ex1.xml"
 

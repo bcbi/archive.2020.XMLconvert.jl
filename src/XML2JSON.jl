@@ -1,4 +1,4 @@
-module XML2JSON
+module xml2json
 
 using LightXML
 using DataStructures
