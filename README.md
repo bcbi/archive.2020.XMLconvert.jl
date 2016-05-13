@@ -69,6 +69,7 @@ print(json_string)
 ```{Julia}
 f = open("ex1.json", "w")
 write(f, json_string)
+close(f)
 ```
 
 ### Spacing and Newline characters
