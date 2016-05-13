@@ -56,7 +56,7 @@ display(xroot)
 ```
 
 ### Convert to `MultiDict`
-In many cases, it is desirable to convert an XML to a more native Julia object. This can be useful for unpacking elements of the XML and flattening out the structure. The code below takes an XML and converts it to a nested `MultiDict` object.
+In many cases, it is desirable to convert an XML to a more native Julia object. This can be useful for unpacking elements of the XML and flattening out the structure. The code below takes an XML's root (from above example) and converts the XML to a nested `MultiDict` object.
 ```{Julia}
 # convert to MultiDict
 xdict = xml2dict(xroot)
