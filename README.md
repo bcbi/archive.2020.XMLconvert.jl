@@ -1,5 +1,5 @@
 
-# xml2json
+# XMLconvert
 [![Build Status](https://travis-ci.org/bcbi/XMLconvert.jl.svg?branch=master)](https://travis-ci.org/bcbi/XMLconvert.jl)
 
 ### Installation
@@ -44,7 +44,7 @@ Suppose we copy and paste the above into a file called `ex1.xml`.
 
 ### Reading in XML document
 ```{Julia}
-using xml2json
+using XMLconert
 
 filename = "ex1.xml"
 
@@ -55,8 +55,10 @@ xroot = root(xdoc)
 display(xroot)
 ```
 
+
+
 ### Convert to JSON
-Next we simply provide the parsed XML's root to the `xml2json()` function.
+If we wanted to convert the above XML to JSON we simply provide the parsed XML's root to the `xml2json()` function.
 ```{Julia}
 json_string = xml2json(xroot)
 print(json_string)

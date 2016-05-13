@@ -38,4 +38,3 @@ function xml2dict(element_node, replace_newline = nothing)
         return content(element_node)
     end
 end
-
