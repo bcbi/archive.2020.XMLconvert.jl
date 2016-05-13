@@ -1,6 +1,6 @@
 
 # xml2json
-[![Build Status](https://travis-ci.org/bcbi/xml2json.jl.svg?branch=master)](https://travis-ci.org/paulstey/xml2json.jl)
+[![Build Status](https://travis-ci.org/bcbi/xml2json.jl.svg?branch=master)](https://travis-ci.org/bcbi/xml2json.jl)
 
 ### Installation
 ```{Julia}
