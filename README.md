@@ -61,7 +61,7 @@ In many cases, it is desirable to convert an XML to a more native Julia object. 
 # convert to MultiDict
 xdict = xml2dict(xroot)
 ```
-
+We can take a look at the structure of of the `MultiDict`.
 ```{Julia}
 # print key structure of the MultiDict
 show_key_structure(xdict)
@@ -89,7 +89,7 @@ show_key_structure(xdict)
 ```
 
 ### Convert to JSON
-If we wanted to convert the above XML to JSON we simply provide the parsed XML's root to the `xml2json()` function.
+If we wanted to convert the above XML to JSON we simply pass the parsed XML's root to the `xml2json()` function.
 ```{Julia}
 json_string = xml2json(xroot)
 print(json_string)
