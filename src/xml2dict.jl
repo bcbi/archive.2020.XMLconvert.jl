@@ -17,13 +17,12 @@ function isnumeric(x)
 end
 
 
-
 function xml2dict(element_node, replace_newline = nothing)
     if has_any_children(element_node)
         ces = collect(child_elements(element_node))
         dict_res = MultiDict{Any, Any}()
 
-        for (ic, c) in enumerate(ces)
+        for c in ces
             childname = name(c)
             value = xml2dict(c, replace_newline)
 
@@ -39,5 +38,4 @@ function xml2dict(element_node, replace_newline = nothing)
         return content(element_node)
     end
 end
-
 
