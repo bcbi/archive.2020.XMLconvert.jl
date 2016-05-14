@@ -2,7 +2,7 @@
 # XMLconvert
 [![Build Status](https://travis-ci.org/bcbi/XMLconvert.jl.svg?branch=master)](https://travis-ci.org/bcbi/XMLconvert.jl)
 
-This package implements a few simple XML conversions. As of now, we can convert XMLs to nested `MultiDict` objects from the [DataStructure](https://github.com/JuliaLang/DataStructures.jl) package. We can also convert XMLs to JSONs. Note that as of this writing, we drop the attributes of the XML.
+This Julia package implements a few simple XML conversions. As of now, we can convert XMLs to nested `MultiDict` objects from the [DataStructure](https://github.com/JuliaLang/DataStructures.jl) package. We can also convert XMLs to JSONs. Note that as of this writing, we drop the attributes of the XML.
 
 
 ### Installation
@@ -86,6 +86,12 @@ show_key_structure(xdict)
         -zip
         -street
         -state
+```
+
+### Extracting Elements from `MultiDict`
+Knowing the key structure of the XML we have parsed into a `MultiDict`, we can now access the elements much like we would using a standard `Dict` from Base Julia.
+```{Julia}
+xdict["book"][2]["Title"]
 ```
 
 ### Convert to JSON
