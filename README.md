@@ -116,7 +116,7 @@ show_key_structure(xdict)
 ### Extracting Elements from `MultiDict`
 Knowing the key structure of the XML we have parsed into a `MultiDict`, we can now access the elements much like we would using a standard `Dict` from Base Julia.
 ```{Julia}
-xdict["book"][2]["Title"][1]
+xdict["book"][2]["Title"][1]         # "Introduction to Templates in C++"
 ```
 
 ### Convert to JSON
