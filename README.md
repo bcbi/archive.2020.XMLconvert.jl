@@ -5,7 +5,7 @@
 This Julia package implements a few simple XML conversions. As of now, we can convert XMLs to nested `MultiDict` objects from the [DataStructure](https://github.com/JuliaLang/DataStructures.jl) package. We can also convert XMLs to JSONs. Note that as of this writing, we drop the attributes of the XML.
 
 
-### Installation
+### Setup
 ```{Julia}
 Pkg.clone("https://github.com/bcbi/XMLconvert.jl.git")
 ```
@@ -55,10 +55,35 @@ xroot = root(xdoc)
 display(xroot)
 ```
 
+Alternatively, when working with small XMLs, we can parse directly from a string rather than from the .xml file on disk.
+```{Julia}
+# Note the need to escape out quotation marks
+xmlstr = "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<bookstore>
+  <book>
+    <title>Introduction to Templates in C++</title>
+    <author>Samantha Black</author>
+    <year>2005</year>
+    <price>29.99</price>
+  </book>
+  <owner>
+    <name>Henry</name>
+  </owner>
+</bookstore>
+"
+xdoc = parse_string(xmlstr)
+```
+
+
 ### Convert to `MultiDict`
 In many cases, it is desirable to convert an XML to a more native Julia object. This can be useful for unpacking elements of the XML and flattening out the structure of data. The `xml2dict()` function takes an XML's root (from above example) and converts the XML to a nested `MultiDict` object.
+
 ```{Julia}
 # convert to MultiDict
+filename = "ex1.xml"
+xdoc = parse_file(filename)
+xroot = root(xdoc)
+
 xdict = xml2dict(xroot)
 ```
 We can take a look at the structure of of the `MultiDict`.
@@ -91,7 +116,7 @@ show_key_structure(xdict)
 ### Extracting Elements from `MultiDict`
 Knowing the key structure of the XML we have parsed into a `MultiDict`, we can now access the elements much like we would using a standard `Dict` from Base Julia.
 ```{Julia}
-xdict["book"][2]["Title"]
+xdict["book"][2]["Title"][1]
 ```
 
 ### Convert to JSON
