@@ -2,10 +2,10 @@
 # XMLconvert
 [![Build Status](https://travis-ci.org/bcbi/XMLconvert.jl.svg?branch=master)](https://travis-ci.org/bcbi/XMLconvert.jl)
 
-This package implements a few simple XML conversions. As of now, we can convert XMLs to nested `MultiDict` objects from the [DataStructure](https://github.com/JuliaLang/DataStructures.jl) package. We can also convert XMLs to JSONs. Note that as of this writing, we drop the attributes of the XML.
+This package implements a few simple XML conversions. As of now, we can convert XMLs into nested `MultiDict` objects from the [DataStructure](https://github.com/JuliaLang/DataStructures.jl) package. We can also convert XMLs to JSONs. Note that as of this writing, we drop the attributes of the XML.
 
 
-### Installation
+### Setup
 ```{Julia}
 Pkg.clone("https://github.com/bcbi/XMLconvert.jl.git")
 ```
@@ -56,7 +56,7 @@ display(xroot)
 ```
 
 ### Convert to `MultiDict`
-In many cases, it is desirable to convert an XML to a more native Julia object. This can be useful for unpacking elements of the XML and flattening out the structure of data. The `xml2dict()` function takes an XML's root (from above example) and converts the XML to a nested `MultiDict` object.
+In many cases, it is desirable to convert an XML to a more native Julia object. This can be useful for unpacking elements of the XML and flattening out the structure of data. The `xml2dict()` function takes an XML's root (from above example) and converts the XML into a nested `MultiDict` object.
 ```{Julia}
 # convert to MultiDict
 xdict = xml2dict(xroot)
@@ -139,7 +139,7 @@ close(f)
 ```
 
 ### Spacing and Newline Characters
-Note that the `xml2json()` function takes two optional arguments. The first controls the spacing of the indentation in the resulting JSON. This defaults to 4 (some prefer 8). The second optional argument (and therefore, third positional argument) controls how newline characters are handled. By default, this replaces `\n` with `\\n` in the JSON's text fields. This produces valid JSON documents.
+Note that the `xml2json()` function takes two optional arguments. The first controls the spacing of the indentation in the resulting JSON; this defaults to 4 (some prefer 8). The second optional argument (and therefore, third positional argument) controls how newline characters are handled. By default, this replaces `\n` with `\\n` in the JSON's text fields. This produces valid JSON documents.
 
 
 ### _Caveats_
