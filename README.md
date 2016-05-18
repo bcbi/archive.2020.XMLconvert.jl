@@ -145,6 +145,9 @@ As we can see above, this produces a single (non-nested) `Dict` where the keys a
 
 Although this kind of flattening is very often useful, we note that removing the original hierarchical structure loses some information. For example, as we see above the returned `Dict` no longer conveys the information about authorship of the two books in our example. The authors and books are both listed, but we can't say who wrote which book.
 
+</br>
+</br>
+</br>
 
 ### Converting XML to JSON
 If we wanted to convert the above XML to JSON we simply pass the parsed XML's root to the `xml2json()` function.
