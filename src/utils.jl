@@ -30,14 +30,7 @@ function is_leafnode(obj)
 end
 
 
-function is_multidict(obj)
-    if typeof(obj) == DataStructures.MultiDict{Any, Any}
-        res = true
-    else
-        res = false
-    end
-    return res
-end
+is_multidict(obj) = isa(obj, MultiDict)
 
 
 function show_key_structure(xmldict_obj, nspaces = 4)
