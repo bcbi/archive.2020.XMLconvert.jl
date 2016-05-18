@@ -114,7 +114,7 @@ show_key_structure(mdict)
 Knowing the key structure of the XML we have parsed into a `MultiDict`, we can now access the elements much like we would using a standard `Dict` from Base Julia.
 
 ```{Julia}
-xdict["book"][2]["Title"][1]
+mdict["book"][2]["title"][1]        # "Introduction to Templates in C++"
 ```
 
 ### Flattening `MultiDict`
@@ -126,10 +126,24 @@ xroot = root(xdoc)
 mdict = xml2dict(xroot)
 
 fdict = flatten(mdict)
+display(fdict)
 ```
-As we can see below, this produces a single (non-nested) `Dict` where the keys are a string concatenation of the keys in the `MultiDict` corresponding to the hierarchical paths of their respective elements. And of course, the elements are simply the elements from the nested `MultiDict` (e.g., `Array`s of strings or numeric values).  
 
+```
+Dict{Any,Any} with 9 entries:
+  "book-price"           => Any[30.0,29.99]
+  "book-author"          => Any["David Smith","James Jones","Samantha Black"]
+  "book-year"            => Any[2005,2005]
+  "owner-address-zip"    => Any[12345]
+  "owner-address-street" => Any["123 Jones Avenue"]
+  "owner-name"           => Any["Henry"]
+  "owner-age"            => Any[59]
+  "book-title"           => Any["Biography of John Adams","Introduction to Templa…
+  "owner-address-state"  => Any["CA"]
+```
+As we can see above, this produces a single (non-nested) `Dict` where the keys are a string concatenation of the keys in the `MultiDict` corresponding to the hierarchical paths of their respective elements. And of course, the elements are simply the elements from the nested `MultiDict` (e.g., `Array`s of strings or numeric values).  
 
+Although this kind of flattening is very often useful, we note that removing the original hierarchical structure loses some information. For example, as we see above the returned `Dict` no longer conveys the information about authorship of the two books in our example. The authors and books are both listed, but we can't say who wrote which book.
 
 
 ### Converting XML to JSON
