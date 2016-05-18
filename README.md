@@ -56,7 +56,7 @@ display(xroot)
 ```
 
 
-Alternatively, when working with small XMLs, we can parse directly from a string rather than from the .xml file on disk.
+Alternatively, when working with small XMLs, we can parse directly from a string rather than from the .xml file on disk. Note that we must escape out the quotation marks in the XML document.
 
 ```{Julia}
  # Note the need to escape out quotation marks
@@ -120,7 +120,7 @@ mdict["book"][2]["title"][1]        # "Introduction to Templates in C++"
 ```
 </br>
 
-### Flattening `MultiDict`
+### Flattening Nested `MultiDict`
 It is also frequently useful to take the hierarchical structure of an XML and "flatten" it to some data format with fewer dimensions. This makes accessing elements much simpler. This is implemented in the `flatten()` function, which when given a nested `MultiDict` object returns a single "flat" `Dict`.
 
 ```{Julia}
