@@ -55,16 +55,38 @@ xroot = root(xdoc)
 display(xroot)
 ```
 
+
+Alternatively, when working with small XMLs, we can parse directly from a string rather than from the .xml file on disk.
+
+```{Julia}
+ # Note the need to escape out quotation marks
+xmlstr = "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<bookstore>
+  <book>
+    <title>Introduction to Templates in C++</title>
+    <author>Samantha Black</author>
+    <year>2005</year>
+    <price>29.99</price>
+  </book>
+  <owner>
+    <name>Henry</name>
+  </owner>
+</bookstore>
+"
+xdoc = parse_string(xmlstr)
+```
+
+
 ### Convert to `MultiDict`
 In many cases, it is desirable to convert an XML to a more native Julia object. This can be useful for unpacking elements of the XML and flattening out the structure of data. The `xml2dict()` function takes an XML's root (from above example) and converts the XML to a nested `MultiDict` object.
 ```{Julia}
 # convert to MultiDict
-xdict = xml2dict(xroot)
+mdict = xml2dict(xroot)
 ```
 We can take a look at the structure of of the `MultiDict`.
 ```{Julia}
 # print key structure of the MultiDict
-show_key_structure(xdict)
+show_key_structure(mdict)
 ```
 
 ```
@@ -88,9 +110,34 @@ show_key_structure(xdict)
         -state
 ```
 
+### Extracting Elements from `MultiDict`
+Knowing the key structure of the XML we have parsed into a `MultiDict`, we can now access the elements much like we would using a standard `Dict` from Base Julia.
+
+```{Julia}
+xdict["book"][2]["Title"][1]
+```
+
+### Flattening `MultiDict`
+It is also frequently useful to take the hierarchical structure of an XML and "flatten" it to some data format with fewer dimensions. This makes accessing elements much simpler. This is implemented in the `flatten()` function, which when given a nested `MultiDict` object returns a single "flat" `Dict`.
+
+```{Julia}
+xdoc = parse_file(filename)
+xroot = root(xdoc)
+mdict = xml2dict(xroot)
+
+fdict = flatten(mdict)
+```
+As we can see below, this produces a single (non-nested) `Dict` where the keys are a string concatenation of the keys in the `MultiDict` corresponding to the hierarchical paths of their respective elements. And of course, the elements are simply the elements from the nested `MultiDict` (e.g., `Array`s of strings or numeric values).  
+
+
+
+
 ### Convert to JSON
 If we wanted to convert the above XML to JSON we simply pass the parsed XML's root to the `xml2json()` function.
 ```{Julia}
+xdoc = parse_file(filename)
+xroot = root(xdoc)
+
 json_string = xml2json(xroot)
 print(json_string)
 ```
@@ -137,6 +184,8 @@ f = open("ex1.json", "w")
 write(f, json_string)
 close(f)
 ```
+
+
 
 ### Spacing and Newline Characters
 Note that the `xml2json()` function takes two optional arguments. The first controls the spacing of the indentation in the resulting JSON; this defaults to 4 (some prefer 8). The second optional argument (and therefore, third positional argument) controls how newline characters are handled. By default, this replaces `\n` with `\\n` in the JSON's text fields. This produces valid JSON documents.
