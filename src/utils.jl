@@ -33,6 +33,12 @@ end
 is_multidict(obj) = isa(obj, MultiDict)
 
 
+function any_multidicts(v::Array{Any, 1})
+    res = any(x -> isa(x, MultiDict), v)
+    return res
+end
+
+
 function show_key_structure(xmldict_obj, nspaces = 4)
     if is_multidict(xmldict_obj)
         keys_array = collect(keys(xmldict_obj))
