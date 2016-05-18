@@ -4,13 +4,11 @@
 
 This package implements a few simple XML conversions. As of now, we can convert XMLs into nested `MultiDict` objects from the [DataStructure](https://github.com/JuliaLang/DataStructures.jl) package. We can also take an XML that has been converted to a         nested `MultiDict` and "flatten" the hierarchical structure into a non-nested `Dict`. Additionally, we can convert XMLs to JSONs using the nested `MultiDict` objects as an intermediary. Note that as of this writing, we drop the attributes of the XML.
 
-</br>
 
 ### Setup
 ```{Julia}
 Pkg.clone("https://github.com/bcbi/XMLconvert.jl.git")
 ```
-</br>
 
 ### Examples
 For our examples we consider the following simple XML document. This toy example was borrowed (with slight modification) from the [LightXML](https://github.com/JuliaLang/LightXML.jl) package.
