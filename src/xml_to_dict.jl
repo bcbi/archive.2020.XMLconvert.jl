@@ -1,3 +1,4 @@
+
 function has_any_children(node_element)
     if length(collect(child_elements(node_element))) > 0
         res = true
