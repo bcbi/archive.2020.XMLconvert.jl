@@ -10,8 +10,10 @@ end
 
 function isnumeric(x)
     res = false
-    try
-        res = typeof(parse(x)) <: Number
+    if search(x, "(") == 0:-1    # screen for parens because parse() throws warning
+        try
+            res = typeof(parse(x)) <: Number
+        end
     end
     return res
 end
