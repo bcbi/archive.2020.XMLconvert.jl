@@ -146,7 +146,7 @@ Dict{Any,Any} with 9 entries:
 ```
 As we can see above, this produces a single (non-nested) `Dict` where the keys are a string concatenation of the keys in the `MultiDict` corresponding to the hierarchical paths of their respective elements. And of course, the elements are simply the elements from the nested `MultiDict` (e.g., `Array`s of strings or numeric values).  
 
-Although this kind of flattening is very often useful, we note that removing the original hierarchical structure loses some information. For example, as we see above the returned `Dict` no longer conveys the information about authorship of the two books in our example. The authors and books are both listed, but we can't say who wrote which book.
+Although this kind of flattening is very often useful, we note that removing the original hierarchical structure loses some information. For example, as we see above, the returned `Dict` no longer conveys the information about authorship of the two books in our example. The authors and books are both listed, but we can't say who wrote which book.
 
 </br>
 
