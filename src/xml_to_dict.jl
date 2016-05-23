@@ -11,7 +11,7 @@ end
 
 function isnumeric(x)
     res = false
-    if search(x, "(") == 0:-1    # screen for parens because parse() throws warning
+    if search(x, ['(', ')', '[', ']', '-'] == 0   # these chars make parse() throw warning
         try
             res = typeof(parse(x)) <: Number
         end
