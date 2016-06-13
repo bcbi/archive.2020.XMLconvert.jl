@@ -6,8 +6,10 @@ function _flatten!(mdict::MultiDict, res::Dict, parent::ASCIIString = "", sep::A
         val = mdict[k]
         if any_multidicts(val)
             for i = 1:length(val)
-                _flatten!(val[i], res, string(parent, sep1, k), sep, depth+1)
-            end
+		if isa(val[i], MultiDict)
+                    _flatten!(val[i], res, string(parent, sep1, k), sep, depth+1)
+                end
+            end 
         else
             newkey = string(parent, sep1, k)
             res[newkey] = append!(get(res, newkey, []), val)
