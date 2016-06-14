@@ -45,32 +45,43 @@ end
 
 
 
-# This function converts *some* attributes to elements in
+
+s function converts *some* attributes to elements in
 # a parsed XML doc. In particular, it will only convert those
-# attributes that are in self-closing tags. Those attributes
-# that are part of a node whose content is not equal to "" will
-# be ignored by this function. Note that the function modifies
-# the parsed XML document in place.
+# attributes that are in self-closing tags. Note that the 
+# function modifies the parsed XML document in place.
+
 
 function attributes_to_elements!(element_node)
-    if has_any_children(element_node)
-        ces = collect(child_elements(element_node))
-        for c in ces
-            attributes_to_elements!(c)
+    if !has_any_children(element_node) && has_attributes(element_node) && content(element_node) != ""
+        elem1 = new_child(element_node, name(element_node))
+        add_text(elem1, content(element_node))
+        attr_dict_array = Array{Dict}(0)
+        push!(attr_dict_array, attributes_dict(element_node))
+        for i = 1:length(attr_dict_array)
+            for (k, v) in zip(keys(attr_dict_array[i]), values(attr_dict_array[i]))
+                elem2 = new_child(element_node, k)
+                add_text(elem2, v)
+            end
         end
-    elseif content(element_node) == ""
+    else
+        if has_any_children(element_node)
+            ces = collect(child_elements(element_node))
+            for c in ces
+                attributes_to_elements!(c)
+            end
+        end 
         if has_attributes(element_node)
             attr_dict_array = Array{Dict}(0)
             push!(attr_dict_array, attributes_dict(element_node))
             for i = 1:length(attr_dict_array)
                 for (k, v) in zip(keys(attr_dict_array[i]), values(attr_dict_array[i]))
-                    elem = new_child(element_node, k)
-                    add_text(elem, v)
+                    elem3 = new_child(element_node, k)
+                    add_text(elem3, v)
                 end
             end
         end
     end
 end
-
 
 
