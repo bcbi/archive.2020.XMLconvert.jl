@@ -46,7 +46,7 @@ end
 
 
 
-s function converts *some* attributes to elements in
+# This function converts *some* attributes to elements in
 # a parsed XML doc. In particular, it will only convert those
 # attributes that are in self-closing tags. Note that the 
 # function modifies the parsed XML document in place.
