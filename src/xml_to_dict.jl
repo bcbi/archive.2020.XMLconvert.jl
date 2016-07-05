@@ -46,11 +46,9 @@ end
 
 
 
-# This function converts *some* attributes to elements in
-# a parsed XML doc. In particular, it will only convert those
-# attributes that are in self-closing tags. Note that the 
-# function modifies the parsed XML document in place.
-
+# This function converts attributes to elements in
+# a parsed XML doc. Note that the function modifies 
+# the parsed XML document in place.
 
 function attributes_to_elements!(element_node)
     if !has_any_children(element_node) && has_attributes(element_node) && content(element_node) != ""
