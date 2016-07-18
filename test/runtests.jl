@@ -43,6 +43,6 @@ fdict = flatten(muldict)
 
 @test haskey(fdict, "book-author")
 @test haskey(fdict, "book-title-lang")
-@test length(fict["book-author"]) == 3
+@test length(fdict["book-author"]) == 3
 
 @test isa(show_key_structure(muldict), Void)
