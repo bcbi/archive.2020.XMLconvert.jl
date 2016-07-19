@@ -13,3 +13,5 @@ notifications:
 script:
   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
   - julia -e 'Pkg.clone(pwd()); Pkg.build("XMLconvert"); Pkg.test("XMLconvert"; coverage=true)'
+after_success:
+  - julia -e 'cd(Pkg.dir("XMLconvert")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'

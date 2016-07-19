@@ -1,6 +1,7 @@
 
 # XMLconvert
 [![Build Status](https://travis-ci.org/bcbi/XMLconvert.jl.svg?branch=master)](https://travis-ci.org/bcbi/XMLconvert.jl)
+[![codecov](https://codecov.io/gh/bcbi/XMLconvert.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/bcbi/XMLconvert.jl)
 
 This package implements a few simple XML conversions. As of now, we can convert XMLs into nested `MultiDict` objects from the [DataStructures](https://github.com/JuliaLang/DataStructures.jl) package. We can also take an XML that has been converted to a         nested `MultiDict` and "flatten" the hierarchical structure into a non-nested `Dict`. Additionally, we can convert XMLs to JSONs using the nested `MultiDict` objects as an intermediary. Note that as of this writing, we drop the attributes of the XML.
 
