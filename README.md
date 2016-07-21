@@ -8,7 +8,7 @@ This package implements a few simple XML conversions. As of now, we can convert 
 
 ### Initial Setup
 ```{Julia}
-Pkg.clone("https://github.com/bcbi/XMLconvert.jl.git")
+Pkg.add("XMLconvert")
 ```
 
 ### Examples
