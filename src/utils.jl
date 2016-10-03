@@ -14,7 +14,7 @@ function is_leafnode(obj)
         non_dict = true
         i = 1
         while non_dict
-            if !isa(obj[i], ASCIIString) && !(typeof(obj[i]) <: Number)
+            if !isa(obj[i], String) && !(typeof(obj[i]) <: Number)
                 non_dict = false
                 res = false
             elseif i == n

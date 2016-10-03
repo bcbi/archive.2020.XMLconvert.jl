@@ -23,7 +23,7 @@ end
 # string with the keys and values of a nested multi-dictionary object
 # returned by the xml2dict function.
 
-function tags_and_elements(mdict::DataStructures.MultiDict{Any, Any}, res::ASCIIString, nspaces::Int = 4)
+function tags_and_elements(mdict::DataStructures.MultiDict{Any, Any}, res::String, nspaces::Int = 4)
     wspace = get_indentation(nspaces)
     nkeys = length(keys(mdict))
     res *= "\n" * wspace * "{"
@@ -55,7 +55,7 @@ end
 
 
 
-function xml2json(xroot::LightXML.XMLElement, nspaces::Int = 4, replace_newline::Union{Void, ASCIIString} = "\\n")
+function xml2json(xroot::LightXML.XMLElement, nspaces::Int = 4, replace_newline::Union{Void, String} = "\\n")
     xmlstring = string(xroot)
 
     # The first element can have attributes, so its name will end either
