@@ -18,7 +18,7 @@ end
 
 function json_conversion_check(root_node)
     json_str = xml2json(root_node)
-    return isa(json_str, ASCIIString)
+    return isa(json_str, String)
 end
 
 

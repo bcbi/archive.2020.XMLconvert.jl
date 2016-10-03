@@ -29,9 +29,9 @@ function xml2dict(element_node, replace_newline = nothing)
             childname = name(c)
             value = xml2dict(c, replace_newline)
 
-            if isa(value, ASCIIString) && isnumeric(value)
+            if isa(value, String) && isnumeric(value)
                 value = parse(value)
-            elseif !isa(replace_newline, Void) && isa(value, ASCIIString)
+            elseif !isa(replace_newline, Void) && isa(value, String)
                value = replace(value, "\n", replace_newline)
             end
             insert!(dict_res, childname, value)
